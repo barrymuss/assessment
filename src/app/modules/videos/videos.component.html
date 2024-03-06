@@ -2,14 +2,18 @@
   <div class="videos-container">
     <div class="video">
       <div class="title">
-        <h6 class="title-text">videos works!</h6>
+        <h5 class="title-text">{{ videos }}</h5>
       </div>
       <div class="inner-video">
         @for(thumbs of movieData; track i; let i = $index){
         <div
           class="thumb"
           [style.backgroundImage]="
-            'url(https://image.tmdb.org/t/p/w1280/' + thumbs.backdrop_path + ')'
+            'linear-gradient(180deg,
+        rgba(244, 227, 207, 0),
+        rgba(54, 65, 76, 0.8)), url(https://image.tmdb.org/t/p/w1280/' +
+            thumbs.backdrop_path +
+            ')'
           "
         >
           <div class="thumb-footer">
@@ -105,9 +109,34 @@
     </div>
     <div class="list">
       <div class="title">
-        <h6 class="title-text">list works!</h6>
+        <h5 class="title-text">{{ list }}</h5>
       </div>
-      test2
+      <div class="inner-list">
+        @for( people of peopleList; track people.id; let i = $index){
+
+        <div class="list-item">
+          <div class="item-image">
+            <img
+              src="https://image.tmdb.org/t/p/w500/{{ people.profile_path }}"
+              alt=""
+            />
+          </div>
+          <div class="item-info">
+            <div class="info-item">
+              {{ people.name }}
+              <span>{{ people.gender == "male" ? "♂" : "♀" }}</span>
+            </div>
+            <div class="info-item">{{ people.known_for_department }}</div>
+            <div class="info-item">
+              <span>
+                <i class="bi bi-star-fill"></i>
+              </span>
+              {{ people.popularity }}
+            </div>
+          </div>
+        </div>
+        }
+      </div>
     </div>
   </div>
 </div>

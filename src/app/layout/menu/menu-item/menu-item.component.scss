@@ -25,4 +25,11 @@
     font-size: 15px;
     text-transform: capitalize;
   }
+
+  &.footer-menu-item {
+    .item-button {
+      font-size: 12px;
+      padding: 4px;
+    }
+  }
 }

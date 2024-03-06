@@ -1,29 +1,41 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { environment } from '@/environments/environment';
+
 import { MovieService } from '../movie.service';
+import { PeopleService } from './people.service';
+import { CommonModule } from '@angular/common';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-videos',
   standalone: true,
-  imports: [HttpClientModule],
-  providers: [MovieService],
+  imports: [HttpClientModule, CommonModule],
+  providers: [MovieService, PeopleService],
   templateUrl: './videos.component.html',
   styleUrl: './videos.component.scss',
 })
 export class VideosComponent implements OnInit {
   httpClient = inject<any>(HttpClient);
-  data: any = [];
+
+  @Input() videos: any;
+  @Input() list: any;
+
   movieData: any = [];
   movieGenre: any = [];
   movieChild: any = [];
   movieChild2: any = [];
 
-  constructor(private movieService: MovieService) {}
+  peopleList: any = [];
+
+  constructor(
+    private movieService: MovieService,
+    private peopleService: PeopleService
+  ) {}
 
   ngOnInit(): void {
     this.fetchMovie();
     this.fetchGenre();
+    this.fetchPeople();
   }
 
   fetchMovie() {
@@ -32,8 +44,6 @@ export class VideosComponent implements OnInit {
       this.movieData = resultData.slice(0, 1);
       this.movieChild = resultData.slice(1, 3);
       this.movieChild2 = resultData.slice(3, 5);
-      // console.log(this.movieData);
-      console.log('child2', this.movieChild2);
     });
   }
 
@@ -42,6 +52,23 @@ export class VideosComponent implements OnInit {
       let resultData = result.genres;
       this.movieGenre = resultData.splice(3);
     });
+  }
+
+  fetchPeople() {
+    this.peopleService
+      .fetchPeople()
+      .pipe(
+        map((result) =>
+          result.results.slice(0, 7).map((element: any) => ({
+            ...element,
+            gender: element.gender === 1 ? 'female' : 'male',
+          }))
+        )
+      )
+      .subscribe((peopleList) => {
+        this.peopleList = peopleList;
+        // console.log(this.peopleList);
+      });
   }
 
   // fetchData() {

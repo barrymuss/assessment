@@ -18,6 +18,7 @@ export class MenuProps {
 export class MenuItemComponent {
   @Input() menuProps: MenuProps = new MenuProps();
   @Output() onClick?: any = new EventEmitter<any>();
+  @Input() class: any;
   onClickButton(event: any) {
     this.onClick.emit(event);
   }

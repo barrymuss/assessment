@@ -17,5 +17,36 @@
     ></app-menuItem>
     }
   </app-menu>
-  <app-videos></app-videos>
+  <app-videos list="popular actor" videos="popular movie"></app-videos>
+  <app-toprated></app-toprated>
+  <app-footer>
+    <app-menu class="footer-menu">
+      @for(item of listMenuFooter; track i; let i = $index){
+      <app-menuItem
+        class="footer-menu-item"
+        [menuProps]="{
+          id: i,
+          text: item.text,
+          type: item.type || 'default',
+        }"
+        (click)="buttonClick(item)"
+      ></app-menuItem>
+      }
+    </app-menu>
+    <div menu2>
+      <app-menu class="footer-menu">
+        @for(item of listMenuFooter2; track i; let i = $index){
+        <app-menuItem
+          class="footer-menu-item"
+          [menuProps]="{
+            id: i,
+            text: item.text,
+            type: item.type || 'default',
+          }"
+          (click)="buttonClick(item)"
+        ></app-menuItem>
+        }
+      </app-menu>
+    </div>
+  </app-footer>
 </div>

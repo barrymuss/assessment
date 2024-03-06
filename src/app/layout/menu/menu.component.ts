@@ -9,5 +9,5 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent {
-  @Input() children: any;
+  @Input() class: any;
 }
