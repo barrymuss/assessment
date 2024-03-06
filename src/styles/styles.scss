@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
 @import "color", "media", "typo";
 
 * {
@@ -10,8 +10,11 @@ html,
 body {
   padding: 0;
   margin: 0;
+  height: 100%;
+  width: 100%;
   font-family: "Poppins", sans-serif !important;
-  color: #1e4a7c;
+  background: $background;
+  color: $white;
 }
 
 .ant-table-wrapper .ant-table-thead > tr > th {

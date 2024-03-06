@@ -1,0 +1,9 @@
+<div class="menus-item" [classList]="'menus-item' + ' ' + menuProps.type">
+  <button
+    class="item-button"
+    id="{{ menuProps.id }}"
+    (click)="onClickButton($event)"
+  >
+    {{ menuProps.text }}
+  </button>
+</div>

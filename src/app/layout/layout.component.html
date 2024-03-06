@@ -1,0 +1,21 @@
+<div class="layout">
+  <app-header
+    [firstName]="firstName"
+    [lastName]="lastName"
+    (click)="searchClick($event)"
+  ></app-header>
+
+  <app-menu>
+    @for(item of listMenu; track i; let i = $index){
+    <app-menuItem
+      [menuProps]="{
+        id: i,
+        text: item.text,
+        type: item.type || 'default',
+      }"
+      (click)="buttonClick(item)"
+    ></app-menuItem>
+    }
+  </app-menu>
+  <app-videos></app-videos>
+</div>

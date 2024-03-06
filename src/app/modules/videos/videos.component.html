@@ -1,0 +1,113 @@
+<div class="videos">
+  <div class="videos-container">
+    <div class="video">
+      <div class="title">
+        <h6 class="title-text">videos works!</h6>
+      </div>
+      <div class="inner-video">
+        @for(thumbs of movieData; track i; let i = $index){
+        <div
+          class="thumb"
+          [style.backgroundImage]="
+            'url(https://image.tmdb.org/t/p/w1280/' + thumbs.backdrop_path + ')'
+          "
+        >
+          <div class="thumb-footer">
+            <h3 class="thumb-title">
+              {{ thumbs.original_title }}
+            </h3>
+            <div class="genre">
+              @for(genre_ids of thumbs.genre_ids; track j; let j = $index){
+              @for(genre of movieGenre; track k; let k = $index){ @if(genre_ids
+              == genre.id){
+
+              <span class="genre-tag">
+                {{ genre.name }}
+              </span>
+
+              } } }
+            </div>
+            <div class="overview">
+              {{ thumbs.overview }}
+            </div>
+          </div>
+        </div>
+        }
+
+        <div class="child">
+          @for(child1 of movieChild; track i; let i = $index){
+
+          <div
+            class="child-item"
+            [style.backgroundImage]="
+              'url(https://image.tmdb.org/t/p/w1280/' +
+              child1.backdrop_path +
+              ')'
+            "
+          >
+            <div class="thumb-footer">
+              <h5 class="thumb-title">
+                {{ child1.original_title }}
+              </h5>
+              <div class="genre">
+                @for(genre_ids of child1.genre_ids; track j; let j = $index){
+                @for(genre of movieGenre; track k; let k = $index){
+                @if(genre_ids == genre.id){
+
+                <span class="genre-tag">
+                  {{ genre.name }}
+                </span>
+
+                } } }
+              </div>
+            </div>
+          </div>
+          }
+          <!-- <div class="child-item">childItem</div> -->
+        </div>
+        <div class="child2">
+          @for(child2 of movieChild2; track i; let i = $index){
+
+          <div
+            class="child-item"
+            [style.backgroundImage]="
+              'url(https://image.tmdb.org/t/p/w1280/' +
+              child2.backdrop_path +
+              ')'
+            "
+          >
+            <div class="thumb-footer">
+              <h5 class="thumb-title">
+                {{ child2.original_title }}
+              </h5>
+              <div class="genre">
+                @for(genre_ids of child2.genre_ids; track j; let j = $index){
+                @for(genre of movieGenre; track k; let k = $index){
+                @if(genre_ids == genre.id){
+
+                <span class="genre-tag">
+                  {{ genre.name }}
+                </span>
+
+                } } }
+              </div>
+            </div>
+          </div>
+          }
+          <div class="child-item empty">
+            <i class="bi bi-plus"></i>
+            <div class="empty-text">
+              <span>add new video</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="list">
+      <div class="title">
+        <h6 class="title-text">list works!</h6>
+      </div>
+      test2
+    </div>
+  </div>
+</div>

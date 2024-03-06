@@ -1,0 +1,35 @@
+<header class="layout-header">
+  <div class="inner-header">
+    <div class="header-logo">
+      <h3 class="logo">Social<span>Network</span></h3>
+    </div>
+    <div class="header-search">
+      <input
+        type="text"
+        class="search-input"
+        name="data"
+        id="data"
+        [(ngModel)]="data"
+        placeholder="find"
+      />
+      <button class="search-button">
+        <i class="bi-search"></i>
+      </button>
+    </div>
+    <div class="header-action">
+      <button class="action-upload" (click)="searchClick($event)">
+        <i class="bi-upload"></i>
+        upload
+      </button>
+      <div class="action-user">
+        <div class="user-avatar">
+          <i class="bi-person-fill"></i>
+        </div>
+        <div class="user-name">
+          <span class="first-name">{{ firstName }}</span>
+          <span class="last-name">{{ lastName }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
