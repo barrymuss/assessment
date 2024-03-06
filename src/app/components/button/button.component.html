@@ -1,0 +1,7 @@
+<button
+  [classList]="'button' + ' ' + props.type"
+  [disabled]="props.disabled"
+  (click)="onClickButton($event)"
+>
+  {{ props.text }}
+</button>

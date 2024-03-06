@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import "color", "media", "typo";
+
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif !important;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif !important;
+  color: #1e4a7c;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > th {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.ant-table-cell {
+  font-size: 13px;
+}

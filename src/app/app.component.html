@@ -1,0 +1,27 @@
+<div class="main">
+  <div>
+    @for(item of listButton; track item; let i = $index) {
+    <app-button
+      [props]="{ text: item.text, type: item.type }"
+      (click)="buttonClick(i)"
+    ></app-button>
+    }
+  </div>
+
+  <!-- <app-button
+    [props]="{ type: 'info', text: 'Button' }"
+    (click)="buttonClick(1)"
+  ></app-button>
+  <app-button
+    [props]="{ type: 'success', text: 'Button' }"
+    (click)="buttonClick(1)"
+  ></app-button>
+  <app-button
+    [props]="{ type: 'danger', text: 'Button' }"
+    (click)="buttonClick(1)"
+  ></app-button>
+  <app-button
+    [props]="{ type: 'warning', text: 'Button' }"
+    (click)="buttonClick(1)"
+  ></app-button> -->
+</div>
