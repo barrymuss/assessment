@@ -32,4 +32,16 @@
       padding: 4px;
     }
   }
+
+  @include media(tablet) {
+    font-size: 12px;
+
+    &::after {
+      font-size: 12px;
+    }
+
+    .item-button {
+      padding: 4px;
+    }
+  }
 }

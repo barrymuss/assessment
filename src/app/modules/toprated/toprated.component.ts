@@ -52,6 +52,7 @@ export class TopratedComponent implements OnInit {
         map((result) =>
           result.results.map((element: any) => ({
             ...element,
+            genre_ids: element.genre_ids.slice(0, 2),
           }))
         )
       )

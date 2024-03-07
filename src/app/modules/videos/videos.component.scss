@@ -28,7 +28,7 @@
         display: grid;
         grid-template:
           repeat(auto-fit, minmax(430px, 1fr)) /
-          1fr minmax(250px, 0.49fr);
+          1fr minmax(190px, 0.49fr);
         grid-template-areas:
           "thumb child"
           "child2 child2";
@@ -248,37 +248,100 @@
             }
           }
         }
+
+        @include media(tablet) {
+          // display: flex;
+          // flex-wrap: wrap;
+          display: grid;
+          // grid-template: 1fr minmax(430px, 1fr) / 1fr;
+          grid-template-rows: 1fr auto auto;
+          grid-template-columns: 1fr;
+          grid-template-areas:
+            "thumb"
+            "child"
+            "child2";
+
+          .thumb {
+            height: 300px;
+            width: 100%;
+
+            .thumb-footer {
+              padding: 0 12px 12px;
+            }
+          }
+
+          .child,
+          .child2 {
+            width: 100%;
+            height: 200px;
+            flex-direction: row;
+            column-gap: 8px;
+
+            .child-item {
+              height: 100%;
+
+              .thumb-footer {
+                padding: 0 12px 12px;
+
+                .genre {
+                  flex-wrap: wrap;
+                  row-gap: 6px;
+                }
+              }
+            }
+
+            @include media(phone) {
+              flex-direction: column;
+              row-gap: 8px;
+
+              height: 300px;
+            }
+          }
+
+          .child2 {
+            .child-item {
+              &.empty {
+                display: none;
+              }
+            }
+          }
+        }
       }
     }
 
     .list {
       grid-area: list;
 
-      .inner-list.genre-list {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 8px;
+      .inner-list {
+        border-top: 1px solid $white;
+        border-bottom: 1px solid $white;
 
-        .list-item {
-          flex-grow: 1;
-          width: 40%;
-          height: 100%;
-          min-height: 50px;
+        &.genre-list {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 8px;
 
-          &:hover {
-            &::after {
-              content: "watch";
+          .list-item {
+            flex-grow: 1;
+            width: 40%;
+            height: 100%;
+            min-height: 50px;
+
+            &:hover {
+              &::after {
+                content: "watch";
+              }
             }
-          }
 
-          .info-item {
-            justify-content: center;
+            .info-item {
+              justify-content: center;
+            }
           }
         }
       }
 
-      .list-item {
+      .inner-list .list-item {
         position: relative;
         height: 100%;
         width: 100%;
@@ -343,6 +406,15 @@
             justify-content: space-between;
           }
         }
+      }
+    }
+
+    @include media(phone) {
+      grid-template: 1fr /1fr;
+      grid-template-areas: "video";
+
+      .list {
+        display: none;
       }
     }
   }

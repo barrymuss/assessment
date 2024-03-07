@@ -39,18 +39,28 @@ export class VideosComponent implements OnInit {
   }
 
   fetchMovie() {
-    this.movieService.fetchMovie().subscribe((result) => {
-      let resultData = result.results;
-      this.movieData = resultData.slice(0, 1);
-      this.movieChild = resultData.slice(1, 3);
-      this.movieChild2 = resultData.slice(3, 5);
-    });
+    this.movieService
+      .fetchMovie()
+      .pipe(
+        map((result) =>
+          result.results.map((element: any) => ({
+            ...element,
+            genre_ids: element.genre_ids.slice(0, 2),
+          }))
+        )
+      )
+      .subscribe((result) => {
+        let resultData = result;
+        this.movieData = resultData.slice(0, 1);
+        this.movieChild = resultData.slice(1, 3);
+        this.movieChild2 = resultData.slice(3, 5);
+      });
   }
 
   fetchGenre() {
     this.movieService.fetchGenre().subscribe((result) => {
       let resultData = result.genres;
-      this.movieGenre = resultData.splice(3);
+      this.movieGenre = resultData;
     });
   }
 

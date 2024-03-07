@@ -17,9 +17,9 @@
           "
         >
           <div class="thumb-footer">
-            <h3 class="thumb-title">
+            <h5 class="thumb-title">
               {{ thumbs.original_title }}
-            </h3>
+            </h5>
             <div class="genre">
               @for(genre_ids of thumbs.genre_ids; track j; let j = $index){
               @for(genre of movieGenre; track k; let k = $index){ @if(genre_ids
@@ -121,9 +121,9 @@
           "
         >
           <div class="thumb-footer">
-            <h3 class="thumb-title">
+            <h5 class="thumb-title">
               {{ thumbs.original_title }}
-            </h3>
+            </h5>
             <div class="genre">
               @for(genre_ids of thumbs.genre_ids; track j; let j = $index){
               @for(genre of movieGenre; track k; let k = $index){ @if(genre_ids
